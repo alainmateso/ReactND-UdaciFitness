@@ -14,24 +14,10 @@ import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import Constants from 'expo-constants'
 import EntryDetail from './components/EntryDetail'
 import Live from "./components/Live";
+import { setLocalNotification } from './utils/helpers'
 
 const Tab = createBottomTabNavigator();
-const Stack = createStackNavigator(
-  // {
-  // Home: {
-  //   screen: TabNavigation
-  // },
-  // EntryDetail: {
-  //   screen: EntryDetail,
-  //   navigationOptions: {
-  //     headerTintColor: white,
-  //     headerStyle: {
-  //       backgroundColor: purple,
-  //     }
-  //   }
-  // }
-  // }
-);
+const Stack = createStackNavigator();
 
 function UdaciStatusBar({ backgroundColor, ...props }) {
   return (
@@ -79,15 +65,20 @@ const StackNavigation = () => {
   )
 }
 
-export default function App() {
-  return (
-    <NavigationContainer>
-      <Provider store={createStore(reducer)}>
-        <View style={{ flex: 1 }}>
-          <UdaciStatusBar backgroundColor={purple} barStyle="light-content" />
-          <StackNavigation />
-        </View>
-      </Provider>
-    </NavigationContainer>
-  );
+export default class App extends React.Component {
+  componentDidMount() {
+    setLocalNotification()
+  }
+  render() {
+    return (
+      <NavigationContainer>
+        <Provider store={createStore(reducer)}>
+          <View style={{ flex: 1 }}>
+            <UdaciStatusBar backgroundColor={purple} barStyle="light-content" />
+            <StackNavigation />
+          </View>
+        </Provider>
+      </NavigationContainer>
+    );
+  }
 }
