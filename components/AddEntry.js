@@ -77,6 +77,7 @@ export class AddEntry extends Component {
     }))
 
     // Route to Home
+    this.toHome()
 
     // Update DB
     submitEntry({ key, entry })
@@ -92,9 +93,15 @@ export class AddEntry extends Component {
     }))
 
     // Route to Home
+    this.toHome()
 
     // Update DB
     removeEntry(key)
+    this.toHome()
+  }
+
+  toHome = () => {
+    this.props.navigation.goBack()
   }
 
   render() {
