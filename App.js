@@ -13,6 +13,7 @@ import { purple, white } from './utils/colors'
 import { FontAwesome, Ionicons } from '@expo/vector-icons'
 import Constants from 'expo-constants'
 import EntryDetail from './components/EntryDetail'
+import Live from "./components/Live";
 
 const Tab = createBottomTabNavigator();
 const Stack = createStackNavigator(
@@ -50,6 +51,10 @@ const TabNavigation = () => {
       <Tab.Screen
         name="Add Entry"
         component={AddEntry}
+      />
+      <Tab.Screen
+        name="Live"
+        component={Live}
       />
     </Tab.Navigator>
   )
