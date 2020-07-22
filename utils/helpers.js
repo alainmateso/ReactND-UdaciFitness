@@ -148,7 +148,7 @@ export function getDailyReminderValue() {
 }
 
 export function clearLocalNotification() {
-  AsyncStorage.removeItem(NOTIFICATION_KEY)
+  return AsyncStorage.removeItem(NOTIFICATION_KEY)
     .then(Notifications.cancelAllScheduledNotificationsAsync())
 }
 
@@ -176,7 +176,7 @@ export function setLocalNotification() {
         Permissions.askAsync(Permissions.NOTIFICATIONS)
           .then(({ status }) => {
             if (status === 'granted') {
-              Notifications.cancelAllScheduledNotificationAsync()
+              Notifications.cancelAllScheduledNotificationsAsync()
 
               let tomorrow = new Date()
 

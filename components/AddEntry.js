@@ -83,8 +83,7 @@ export class AddEntry extends Component {
     submitEntry({ key, entry })
 
     // Clean local Notification
-    clearLocalNotification()
-      .then(setLocalNotification())
+    clearLocalNotification().then(setLocalNotification);
   }
 
   reset = () => {
